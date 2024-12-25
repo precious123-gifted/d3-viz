@@ -12,6 +12,37 @@ import {StoreProvider} from "./StoreContext"
 export default function Dashboard() {
 
 
+  const [isLandscape, setIsLandscape] = useState(true);
+
+  useEffect(() => {
+    const checkOrientation = () => {
+      if (window.innerHeight > window.innerWidth) {
+        setIsLandscape(false); // Portrait
+      } else {
+        setIsLandscape(true); // Landscape
+      }
+    };
+
+    // Initial check
+    checkOrientation();
+
+    // Listen for orientation changes
+    window.addEventListener("resize", checkOrientation);
+
+    // Cleanup listener on component unmount
+    return () => window.removeEventListener("resize", checkOrientation);
+  }, []);
+
+  if (!isLandscape) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <h1>This dashboard only works in landscape mode (laptops and desktops).</h1>
+        <p>Please rotate your device or switch to a larger screen.</p>
+      </div>
+    );
+  }
+
+
 
   const [storeSimulation, setStoreSimulation] = useState({
     totalSales: 100000.08,
