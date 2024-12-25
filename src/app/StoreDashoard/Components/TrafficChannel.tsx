@@ -20,9 +20,9 @@ export default function TrafficChannel() {
   useEffect(() => {
     // Function to update the traffic channel values
     const interval = setInterval(() => {
-      let newDirectTraffic = Math.max(0, Math.min(100, directTraffic + (Math.random() - 0.5) * 5));
-      let newOrganicTraffic = Math.max(0, Math.min(100, organicTraffic + (Math.random() - 0.5) * 5));
-      let newReferralTraffic = Math.max(0, Math.min(100, referralTraffic + (Math.random() - 0.5) * 5));
+      const newDirectTraffic = Math.max(0, Math.min(100, directTraffic + (Math.random() - 0.5) * 5));
+      const newOrganicTraffic = Math.max(0, Math.min(100, organicTraffic + (Math.random() - 0.5) * 5));
+      const newReferralTraffic = Math.max(0, Math.min(100, referralTraffic + (Math.random() - 0.5) * 5));
 
       // Calculate the total sum
       const total = newDirectTraffic + newOrganicTraffic + newReferralTraffic;
