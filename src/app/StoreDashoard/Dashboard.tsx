@@ -12,36 +12,7 @@ import {StoreProvider} from "./StoreContext"
 export default function Dashboard() {
 
 
-  const [isLandscape, setIsLandscape] = useState(true);
-
-  useEffect(() => {
-    const checkOrientation = () => {
-      if (window.innerHeight > window.innerWidth) {
-        setIsLandscape(false); // Portrait
-      } else {
-        setIsLandscape(true); // Landscape
-      }
-    };
-
-    // Initial check
-    checkOrientation();
-
-    // Listen for orientation changes
-    window.addEventListener("resize", checkOrientation);
-
-    // Cleanup listener on component unmount
-    return () => window.removeEventListener("resize", checkOrientation);
-  }, []);
-
-  if (!isLandscape) {
-    return (
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
-        <h1>This dashboard only works in landscape mode (laptops and desktops).</h1>
-        <p>Please rotate your device or switch to a larger screen.</p>
-      </div>
-    );
-  }
-
+  
 
 
   const [storeSimulation, setStoreSimulation] = useState({
@@ -102,7 +73,11 @@ export default function Dashboard() {
 
     return (
       <StoreProvider>
-      <div className="  bg-[#B7C8C2] h-screen w-screen px-3 py-3">
+         <div style={{ textAlign: "center", marginTop: "50px" }} className="landscape:hidden ">
+        <h1>This dashboard only works in landscape mode (laptops and desktops).</h1>
+        <p>Please rotate your device or switch to a larger screen.</p>
+      </div>
+      <div className="  bg-[#B7C8C2] h-screen w-screen px-3 py-3 portrait:hidden">
 <section className="top-section   flex justify-between mb-10">
 <ResultScreen trigger="Total Sales" storeSimulation={storeSimulation} />
       <ResultScreen trigger="Total Orders" storeSimulation={storeSimulation} />
