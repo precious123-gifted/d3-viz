@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import {StoreProvider} from "./StoreContext"
 
 
+
 export default function Dashboard() {
 
 
@@ -24,16 +25,7 @@ export default function Dashboard() {
 
   
  
-  const formatNumber = (num) => {
-    if (num >= 1e9) {
-      return `${(num / 1e9).toFixed(2)}B`; // Billion
-    } else if (num >= 1e6) {
-      return `${(num / 1e6).toFixed(2)}M`; // Million
-    } else if (num >= 1e3) {
-      return `${(num / 1e3).toFixed(2)}K`; // Thousand
-    }
-    return num.toFixed(2); // Default formatting for smaller numbers
-  };
+  
 
   useEffect(() => {
     // prompt("The values shown in this Dashboard is a result of a simulation i created")
@@ -66,7 +58,7 @@ export default function Dashboard() {
           visitors: prev.visitors + visitorsIncrement,
           previousTotalProducts: prev.totalProducts,
           totalProducts: restockedProducts,
-          
+
         };
       });
     };

@@ -178,8 +178,9 @@ export default function ChartScreen() {
       });
   }, [dataSet]);
 
-  
+
   if (!isMounted) return null;
+  
 
   return (
     <div className="content relative w-[78.6vw] h-[45vh] text-[#97A8A2] bg-[#40473A] rounded-md p-3 mb-10 flex flex-col">
