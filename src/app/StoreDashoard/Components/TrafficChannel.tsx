@@ -8,7 +8,7 @@ export default function TrafficChannel() {
   const [organicTraffic, setOrganicTraffic] = useState(78);
   const [referralTraffic, setReferralTraffic] = useState(60);
 
-let
+
   const [dataSet, setDataSet] = useState([]);
   const [topChannels, setTopChannels] = useState([
     { name: 'Direct', value: directTraffic, color: '#697F9B' },
