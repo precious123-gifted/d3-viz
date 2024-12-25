@@ -21,9 +21,9 @@ let
   useEffect(() => {
     // Function to update the traffic channel values
     const interval = setInterval(() => {
-      let newDirectTraffic = Math.max(0, Math.min(100, directTraffic + (Math.random() - 0.5) * 5));
-      let newOrganicTraffic = Math.max(0, Math.min(100, organicTraffic + (Math.random() - 0.5) * 5));
-      let newReferralTraffic = Math.max(0, Math.min(100, referralTraffic + (Math.random() - 0.5) * 5));
+      const newDirectTraffic = Math.max(0, Math.min(100, directTraffic + (Math.random() - 0.5) * 5));
+      const newOrganicTraffic = Math.max(0, Math.min(100, organicTraffic + (Math.random() - 0.5) * 5));
+      const newReferralTraffic = Math.max(0, Math.min(100, referralTraffic + (Math.random() - 0.5) * 5));
 
       // Calculate the total sum
       const total = newDirectTraffic + newOrganicTraffic + newReferralTraffic;
@@ -105,7 +105,6 @@ let
         .attr("class", "x-axis")
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x).tickFormat(xAxisFormat).ticks(d3.timeSecond.every(1))); // Format ticks to show time every second
-
 
       // Y-axis rendering with percentage formatting and limiting to 7 ticks
       chart
