@@ -66,6 +66,7 @@ export default function Dashboard() {
           visitors: prev.visitors + visitorsIncrement,
           previousTotalProducts: prev.totalProducts,
           totalProducts: restockedProducts,
+          
         };
       });
     };

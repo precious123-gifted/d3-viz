@@ -178,6 +178,7 @@ export default function ChartScreen() {
       });
   }, [dataSet]);
 
+  
   if (!isMounted) return null;
 
   return (

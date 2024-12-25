@@ -84,6 +84,7 @@ function ResultScreen({ trigger }) {
         const interpolate = d3.interpolateNumber(+this.textContent.replace(/[^\d.]/g, ""), percentage);
         return function (t) {
           this.textContent = `${interpolate(t).toFixed(2)}%`;
+          
         };
       });
   }, [value, percentage]);

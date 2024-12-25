@@ -10,6 +10,7 @@ export const useStore = () => {
 
 // Provider Component
 export const StoreProvider = ({ children }) => {
+  
   const [storeSimulation, setStoreSimulation] = useState({
     totalSales: 100000.08,
     totalOrders: 1500,

@@ -16,6 +16,7 @@ export default function SideBar() {
   return (
     <>
     <div className="content w-[18vw] h-[74vh] bg-[#40473A] rounded-md p-3 mr-10">
+      
 
 <div className="notification-logo-div flex mb-9 justify-between"><span className="cursor-pointer"><Image src={notificationIcon} alt="notification icon" className="w-[1vw]"/> </span><span className="cursor-pointer"><Image src={logo} alt="logo" className="w-[2vw]"/> </span></div>
 <div className="profile-image-div flex items-center space-x-3 mb-9">
