@@ -1,4 +1,0 @@
-rules: {
-    "react/no-unescaped-entities": "off",
-  }
-  
