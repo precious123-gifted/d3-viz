@@ -180,6 +180,7 @@ export default function ChartScreen() {
 
 
   if (!isMounted) return null;
+
   
 
   return (

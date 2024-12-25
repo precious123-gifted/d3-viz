@@ -7,6 +7,7 @@ export default function TrafficChannel() {
   const [directTraffic, setDirectTraffic] = useState(98);
   const [organicTraffic, setOrganicTraffic] = useState(78);
   const [referralTraffic, setReferralTraffic] = useState(60);
+  
 
 
   const [dataSet, setDataSet] = useState([]);
