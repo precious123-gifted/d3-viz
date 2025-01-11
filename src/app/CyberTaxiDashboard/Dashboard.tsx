@@ -9,7 +9,7 @@ import Head from 'next/head';
 
 
 // Haversine formula to calculate the distance between two lat/long points
-const haversineDistance = (coords1, coords2) => {
+const haversineDistance = (coords1: [number, number], coords2: [number, number]): number => {
   const [lat1, lon1] = coords1;
   const [lat2, lon2] = coords2;
 
@@ -26,6 +26,7 @@ const haversineDistance = (coords1, coords2) => {
 
   return R * c; // Distance in kilometers
 };
+
 
 export default function Dashboard() {
   const mapRef = useRef(null);
