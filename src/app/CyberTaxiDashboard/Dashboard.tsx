@@ -4,7 +4,6 @@ import * as topojson from 'topojson-client';
 import background from './Assets/background.svg';
 import Image from 'next/image';
 import useSound from 'use-sound';
-import { Jersey_25 } from "next/font/google";
 import Head from 'next/head';
 
 
@@ -58,7 +57,7 @@ export default function Dashboard() {
     const projection = d3.geoMercator().scale(190).translate([width / 2, height / 1.8]);
     const path = d3.geoPath().projection(projection);
   
-    const zoom = d3
+    const zoom:any = d3
       .zoom()
       .scaleExtent([1, 10]) // Allow scaling between 1x and 10x
       .on('zoom', (event) => {
@@ -69,7 +68,7 @@ export default function Dashboard() {
   
     const g = svg.append('g');
   
-    d3.json('https://d3js.org/world-110m.v1.json').then((data) => {
+    d3.json('https://d3js.org/world-110m.v1.json').then((data:any) => {
       const countries = topojson.feature(data, data.objects.countries).features;
   
       g.selectAll('path')
