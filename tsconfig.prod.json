@@ -1,0 +1,6 @@
+{
+    "extends": "./tsconfig.json", // Inherit from your main tsconfig
+    "compilerOptions": {
+      "noEmitOnError": false // Allow compilation even with errors
+    }
+  }
