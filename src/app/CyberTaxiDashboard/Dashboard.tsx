@@ -6,6 +6,7 @@ import Image from 'next/image';
 import useSound from 'use-sound';
 import Head from 'next/head';
 import { Feature, FeatureCollection } from 'geojson';
+import { feature } from 'topojson-client';
 
 
 // Haversine formula to calculate the distance between two lat/long points
@@ -76,7 +77,7 @@ export default function Dashboard() {
       .data(countries)
       .enter()
       .append('path')
-      .attr('d', (d: topojson.Feature) => path(d))  // Call path(d) to get the path string
+      .attr('d', (d: topojson.feature) => path(d))  // Call path(d) to get the path string
       .attr('fill', '#306FC7')
       .attr('stroke', '#080614')
       .attr('stroke-width', 0.5)
