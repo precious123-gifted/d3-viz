@@ -14,11 +14,7 @@ const nextConfig: NextConfig = {
     config.module.rules.push({
       test: /\.(ogg|mp3|wav|mpe?g)$/i,
       exclude: config.exclude,
-      eslint: {
-        // Warning: This will disable ESLint in production.
-        ignoreDuringBuilds: true 
-      },
-      use: [
+         use: [
         {
           loader: require.resolve("url-loader"),
           options: {
