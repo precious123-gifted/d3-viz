@@ -5,6 +5,7 @@ import background from './Assets/background.svg';
 import Image from 'next/image';
 import useSound from 'use-sound';
 import Head from 'next/head';
+import { Feature, FeatureCollection } from 'geojson';
 
 
 // Haversine formula to calculate the distance between two lat/long points
@@ -72,20 +73,20 @@ export default function Dashboard() {
       const countries = topojson.feature(data, data.objects.countries).features;
   
       g.selectAll('path')
-        .data(countries)
-        .enter()
-        .append('path')
-        .attr('d', path)
-        .attr('fill', '#306FC7')
-        .attr('stroke', '#080614')
-        .attr('stroke-width', 0.5)
-        .on('mouseover', function () {
-          d3.select(this).attr('fill', '#4482D9');
-        })
-        .on('mouseout', function () {
-          d3.select(this).attr('fill', '#306FC7');
-        });
-  
+      .data(countries)
+      .enter()
+      .append('path')
+      .attr('d', (d: topojson.Feature) => path(d))  // Call path(d) to get the path string
+      .attr('fill', '#306FC7')
+      .attr('stroke', '#080614')
+      .attr('stroke-width', 0.5)
+      .on('mouseover', function () {
+        d3.select(this).attr('fill', '#4482D9');
+      })
+      .on('mouseout', function () {
+        d3.select(this).attr('fill', '#306FC7');
+      });
+    
       // Add car marker
       const car = g
         .append('circle')
@@ -100,7 +101,7 @@ export default function Dashboard() {
       ];
   
       const carPosition = projection(route[0]);
-      car.attr('cx', carPosition[0]).attr('cy', carPosition[1]);
+      car.attr('cx', carPosition![0]).attr('cy', carPosition![1]);
   
       // Slight zoom to car on load
       svg.transition()
@@ -110,7 +111,7 @@ export default function Dashboard() {
           d3.zoomIdentity
             .translate(width / 2, height / 2)
             .scale(2) // Slight zoom
-            .translate(-carPosition[0], -carPosition[1])
+            .translate(-carPosition![0], -carPosition![1])
         );
   
       // Add destination marker
@@ -152,8 +153,8 @@ export default function Dashboard() {
           d3.select(car.node())
             .transition()
             .duration(30000) // Adjust speed
-            .attrTween('cx', () => d3.interpolate(start[0], end[0]))
-            .attrTween('cy', () => d3.interpolate(start[1], end[1]))
+            .attrTween('cx', () => d3.interpolate(start![0], end![0]))
+            .attrTween('cy', () => d3.interpolate(start![1], end![1]))
             .on('end', () => moveCar(route, index + 1));
         } else {
           // Calculate earnings after trip finishes
@@ -175,8 +176,8 @@ export default function Dashboard() {
       // Draw route line
       const routeLine = d3
         .line()
-        .x((d) => projection(d)[0])
-        .y((d) => projection(d)[1])
+        .x((d) => projection(d)![0])
+        .y((d) => projection(d)![1])
         .curve(d3.curveLinear);
   
       g.append('path')
@@ -242,7 +243,7 @@ export default function Dashboard() {
       .nice()
       .range([height - margin.bottom, margin.top]);
   
-    const xAxis = (g) =>
+    const xAxis = (g:any) =>
       g
         .attr('transform', `translate(0,${height - margin.bottom})`)
         .call(d3.axisBottom(x))
@@ -283,7 +284,7 @@ export default function Dashboard() {
       .selectAll('text')
       .data(data)
       .join('text')
-      .attr('x', (d) => x(d.label) + x.bandwidth() / 2)
+      .attr('x', (d) => x(d.label)! + x.bandwidth() / 2)
       .attr('y', (d) => y(d.revenue) - 5)
       .attr('text-anchor', 'middle')
       .attr('fill', '#306FC7')
