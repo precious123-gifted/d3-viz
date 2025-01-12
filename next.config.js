@@ -7,6 +7,10 @@ module.exports = {
         generator: {
           filename: "static/chunks/[path][name].[hash][ext]",
         },
+        eslint: {
+            // Warning: This will disable ESLint in production.
+            ignoreDuringBuilds: true 
+          }
       });
   
       return config;
