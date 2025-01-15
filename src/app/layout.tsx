@@ -14,7 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 const jersey25 = Jersey_25({
-weight:'400'
+weight:'400',
+variable: "--font-jersey25",
+subsets: ["latin"]
 
 });
 
@@ -31,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${jersey25.variable} antialiased`}
       >
         {children}
       </body>
