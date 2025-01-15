@@ -77,7 +77,7 @@ export default function Dashboard() {
         <h1>This dashboard only works in landscape mode (laptops and desktops).</h1>
         <p>Please rotate your device or switch to a larger screen.</p>
       </div>
-      <div className="  bg-[#B7C8C2] h-screen w-screen px-3 py-3 portrait:hidden">
+      <div className="  bg-[#B7C8C2] h-screen w-screen px-3 py-3 overflow-hidden portrait:hidden">
 <section className="top-section   flex justify-between mb-10">
 <ResultScreen trigger="Total Sales" storeSimulation={storeSimulation} />
       <ResultScreen trigger="Total Orders" storeSimulation={storeSimulation} />
